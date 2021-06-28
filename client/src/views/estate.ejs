@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estate</title>
+    <link rel="stylesheet" href="/main.css" type="text/css" />
+  </head>
+  <body>
+    <nav>
+      <a href="/" class="logo" style="color: #fff">Icar<span>us</span></a>
+    </nav>
+    <div class="hero-estate">
+      <div class="overlay"></div>
+      <img src="/<%=prop['img-src']%>" alt="" />
+    </div>
+    <div class="details-large">
+      <h1 class="name"><%=prop.name%></h1>
+      <h3 class="address"><%=prop.address%></h3>
+      <div class="table-container">
+        <div class="table">
+          <div class="row">
+            <div class="heading">Token Price</div>
+            <div class="heading">Available Tokens</div>
+            <div class="heading">Total Tokens</div>
+          </div>
+          <div class="row">
+            <div class="cell">&#8377; <%=prop["token-price"]%> / token</div>
+            <div class="cell"><%=prop["tokens-available"]%></div>
+            <div class="cell"><%=prop["total-tokens"]%></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form action="#" class="buy-box">
+      <h2>Purchase</h2>
+      <div class="input-container">
+        <input
+          type="number"
+          name="token"
+          id="token"
+          min="1"
+          max="<%=prop['tokens-available']%>"
+          value="1"
+          onchange="calculate()"
+        />
+        <label for="token">Tokens</label>
+      </div>
+      <div class="final">
+        <div class="total">Total : &#8377; <%=prop["token-price"]%></div>
+        <button type="submit" class="btn">Buy</button>
+      </div>
+    </form>
+  </body>
+  <script>
+    const calculate = () => {
+      const inp = document.querySelector('input[type="number"]');
+      const tot = document.querySelector('.total');
+      const price = Number('<%=prop["token-price"]%>'.slice(0, -1));
+      tot.innerHTML = `Total : &#8377; ${price * inp.value}K`;
+    };
+  </script>
+</html>
