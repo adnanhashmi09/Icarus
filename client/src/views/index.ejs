@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="/main.css" type="text/css" />
+  </head>
+  <body>
+    <nav>
+      <a href="/" class="logo">Icar<span>us</span></a>
+    </nav>
+    <div class="hero">
+      <h1>Get the best <span>real estate</span> here.</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+        nemo natus dicta beatae illo magnam corrupti recusandae ratione nisi
+        doloremque. Nesciunt eaque quo minus veniam, illo tempore voluptatibus
+        molestiae quas.
+      </p>
+    </div>
+    <div class="container">
+      <% data.forEach(estate=>{ %>
+      <a href="/estate/<%=estate.id%>" class="box">
+        <div class="overlay"></div>
+        <img src="/<%=estate['img-src']%>" alt="estate" />
+        <div class="details">
+          <h2><%=estate.name%></h2>
+          <p class="address"><%=estate.address%></p>
+          <p class="token-price">&#8377;<%=estate["token-price"]%> / token</p>
+        </div>
+      </a>
+      <% }) %>
+    </div>
+  </body>
+</html>
+
+<!-- 
+  <a class="box">
+        <div class="overlay"></div>
+        <img src="IMG/one.jpg" alt="" />
+        <div class="details">
+          <h2>The Eastern Farms</h2>
+          <p class="address">Sec 1, Vaishali, Ghaziabad</p>
+          <p class="token-price">&#8377; 72K / token</p>
+        </div>
+      </a>
+ -->
