@@ -26,7 +26,7 @@
             <div class="heading">Total Tokens</div>
           </div>
           <div class="row">
-            <div class="cell">&#8377; <%=prop["token-price"]%> / token</div>
+            <div class="cell"><%=prop["token-price"]%> / token</div>
             <div class="cell"><%=prop["tokens-available"]%></div>
             <div class="cell"><%=prop["total-tokens"]%></div>
           </div>
@@ -49,7 +49,7 @@
         <label for="token">Tokens</label>
       </div>
       <div class="final">
-        <div class="total">Total : &#8377; <%=prop["token-price"]%></div>
+        <div class="total">Total : <%=prop["token-price"]%></div>
         <button type="submit" class="btn">Buy</button>
       </div>
     </form>
@@ -59,7 +59,7 @@
       const inp = document.querySelector('input[type="number"]');
       const tot = document.querySelector('.total');
       const price = Number('<%=prop["token-price"]%>'.slice(0, -1));
-      tot.innerHTML = `Total : &#8377; ${price * inp.value}K`;
+      tot.innerHTML = `Total : ${price * inp.value}K`;
     };
   </script>
   <script type="text/javascript" src="/JS/script.js" ></script>
