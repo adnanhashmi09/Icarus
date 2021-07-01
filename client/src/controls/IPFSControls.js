@@ -60,3 +60,7 @@ const pinNFTToIPFS = async (TokenName, TokenDescripton) => {
         console.log(err);
     }
 }
+
+module.exports = {
+    pinNFTToIPFS
+}

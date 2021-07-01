@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const { data } = require('./DB/realEstate.json');
+const { mintTokens, mintFractions, mintComplete, TransferTokens, getTokenDetails } = require('./controls/ContractControls');
+const { pinNFTToIPFS } = require('./controls/IPFSControls');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -20,8 +22,18 @@ app.get('/', (req, res) => {
 app.get('/estate/:id', (req, res) => {
   const _id = '' + req.params.id;
   const propertyData = data.filter((d) => d.id == _id);
+  //const details = getTokenDetails();
   res.render('estate', { prop: propertyData[0] });
 });
+
+app.post('/estate/:id', (req,res) => {
+  const tokenId = req.params.id;
+  const amount = req.body.token;
+  const user = req.body.account;
+  console.log(tokenId, amount, user);
+  //TransferTokens(user, tokenId, amount);
+  res.redirect(`/estate/${tokenId}`);
+})
 
 app.listen(port, () => {
   console.log('Running on port ' + port);

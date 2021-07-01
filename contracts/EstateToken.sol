@@ -5,7 +5,6 @@ import "../node_modules/@openzeppelin/contracts/utils/Counters.sol";
 import "../node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 import "./cERC20.sol";
-import "./EstateFractions.sol";
 
 contract EstateToken is ERC721 {
 
@@ -51,35 +50,16 @@ contract EstateToken is ERC721 {
         setTokenURI(newID, _metadata);
     }
 
-    function setTokenFractions(uint _tokenId, uint _amount, uint _price) public {
-        cERC20 newContract = new cERC20(_tokenId, tokenURIs[_tokenId],  "FRT");
-        address ContractAddress = address(newContract);
-        tokenContracts[_tokenId] = ContractAddress;
-        newContract._mint(ownerOf(_tokenId), _amount, _price);
+    function setTokenFractions(uint _tokenId, address _address) public {
+        tokenContracts[_tokenId] = _address;
     }
 
-    function tranferTokens(address _from, address _to, uint _tokenId, uint _amount, uint _newPrice) public {
-        EstateFractions FractionContract = EstateFractions(tokenContracts[_tokenId]);
-        FractionContract.transferAndSet(_from, _to, _amount, _newPrice);
+    function getOwner(uint256 _tokenId) public view returns (address) {
+        return ownerOf(_tokenId);
     }
 
     function getContract(uint _tokenId) public view returns (address) {
         return tokenContracts[_tokenId];
-    }
-
-    function getUserBalance(address _user, uint _tokenId) public view returns (uint) {
-        EstateFractions FractionContract = EstateFractions(tokenContracts[_tokenId]);
-        return FractionContract.balanceOf(_user);
-    }
-
-    function getTokenURI(uint _tokenId) public view returns (string memory) {
-        EstateFractions FractionContract = EstateFractions(tokenContracts[_tokenId]);
-        return FractionContract.name();
-    }
-
-    function getTokenPrice(uint _tokenId) public view returns (uint) {
-        EstateFractions FractionContract = EstateFractions(tokenContracts[_tokenId]);
-        return FractionContract.Price();
     }
 }
 

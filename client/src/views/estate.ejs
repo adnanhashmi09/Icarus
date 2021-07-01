@@ -33,7 +33,7 @@
         </div>
       </div>
     </div>
-    <form action="#" class="buy-box">
+    <form action="#" class="buy-box" method="POST">
       <h2>Purchase</h2>
       <div class="input-container">
         <input
@@ -45,6 +45,7 @@
           value="1"
           onchange="calculate()"
         />
+        <input type="hidden" name="account" />
         <label for="token">Tokens</label>
       </div>
       <div class="final">
@@ -61,4 +62,5 @@
       tot.innerHTML = `Total : &#8377; ${price * inp.value}K`;
     };
   </script>
+  <script type="text/javascript" src="/JS/script.js" ></script>
 </html>

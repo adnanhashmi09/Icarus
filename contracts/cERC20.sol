@@ -41,6 +41,7 @@ contract cERC20 is Context, IERC20, IERC20Metadata {
     string private _symbol;
     uint256 private _tokenId;
     uint256 private _price;
+    uint256 private _available = 0;
 
     /**
      * @dev Sets the values for {name} and {symbol}.
@@ -51,15 +52,23 @@ contract cERC20 is Context, IERC20, IERC20Metadata {
      * All two of these values are immutable: they can only be set once during
      * construction.
      */
+
+    receive() external payable {}
+    fallback() external payable {}
+
     constructor (uint256 tokenId_, string memory name_, string memory symbol_) {
         _tokenId = tokenId_;
         _name = name_;
         _symbol = symbol_;
     }
-
     /**
      * @dev Returns the name of the token.
      */
+
+    function tokenDetails() public view virtual returns (string memory, string memory, uint256, uint256, uint256, uint256) {
+        return (_name, _symbol, _tokenId, _price, _available, _totalSupply);
+    }
+
     function name() public view virtual override returns (string memory) {
         return _name;
     }
@@ -102,6 +111,10 @@ contract cERC20 is Context, IERC20, IERC20Metadata {
      */
     function totalSupply() public view virtual override returns (uint256) {
         return _totalSupply;
+    }
+
+    function onSale() public view virtual returns (uint256) {
+        return _available;
     }
 
     /**
@@ -147,6 +160,11 @@ contract cERC20 is Context, IERC20, IERC20Metadata {
         _price = price_;
     }
 
+    function putOnSale(address owner, uint256 amount) public virtual {
+        require(balanceOf(owner) >= amount, "ERC20: User balance not sufficient");
+        _available += amount;
+    }
+
     /**
      * @dev See {IERC20-transferFrom}.
      *
@@ -160,24 +178,18 @@ contract cERC20 is Context, IERC20, IERC20Metadata {
      * - the caller must have allowance for ``sender``'s tokens of at least
      * `amount`.
      */
-    function transferAndSet(address sender, address recipient, uint256 amount, uint256 price) public virtual returns (bool) {
+    function requestTransfer(address payable sender, address recipient, uint256 amount, uint256 price) public virtual payable returns (bool) {
         _transfer(sender, recipient, amount);
-
-        uint256 currentAllowance = _allowances[sender][_msgSender()];
-        uint256 receiverAllowance = _allowances[sender][_msgSender()];
-        require(currentAllowance >= amount, "ERC20: transfer amount exceeds allowance");
-        
-        _approve(sender, _msgSender(), currentAllowance - amount);
-        _approve(recipient, _msgSender(), receiverAllowance + amount);
-
+        _available -= amount;
         _price = price;
-
+        sender.transfer(msg.value);
+        
         return true;
     }
 
     function transferFrom(address sender, address recipient, uint256 amount) public virtual override returns (bool) {
         _transfer(sender, recipient, amount);
-
+        
         uint256 currentAllowance = _allowances[sender][_msgSender()];
         require(currentAllowance >= amount, "ERC20: transfer amount exceeds allowance");
         _approve(sender, _msgSender(), currentAllowance - amount);
@@ -262,7 +274,7 @@ contract cERC20 is Context, IERC20, IERC20Metadata {
      *
      * - `to` cannot be the zero address.
      */
-    function _mint(address account, uint256 amount, uint256 price) external virtual {
+    function _mint(address account, uint256 amount, uint256 price, address spender) external virtual {
         require(account != address(0), "ERC20: mint to the zero address");
 
         _beforeTokenTransfer(address(0), account, amount);
@@ -270,8 +282,10 @@ contract cERC20 is Context, IERC20, IERC20Metadata {
         _totalSupply += amount;
         _balances[account] += amount;
 
-        _approve(account, _msgSender(), amount);
+        //_approve(account, _msgSender(), amount);
         _price = price;
+        putOnSale(account, amount);
+        _approve(account, spender, amount);
 
         emit Transfer(address(0), account, amount);
     }
@@ -336,4 +350,5 @@ contract cERC20 is Context, IERC20, IERC20Metadata {
      * To learn more about hooks, head to xref:ROOT:extending-contracts.adoc#using-hooks[Using Hooks].
      */
     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual { }
+    
 }
