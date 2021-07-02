@@ -19,10 +19,11 @@ app.get('/', (req, res) => {
   res.render('index', { data });
 });
 
-app.get('/estate/:id', (req, res) => {
+app.get('/estate/:id', async (req, res) => {
   const _id = '' + req.params.id;
   const propertyData = data.filter((d) => d.id == _id);
-  //const details = getTokenDetails();
+  const details = await getTokenDetails(req.params.id);
+  propertyData[0]["tokens-available"] = details['4'];
   res.render('estate', { prop: propertyData[0] });
 });
 
@@ -31,8 +32,8 @@ app.post('/estate/:id', (req,res) => {
   const amount = req.body.token;
   const user = req.body.account;
   console.log(tokenId, amount, user);
-  //TransferTokens(user, tokenId, amount);
-  res.redirect(`/estate/${tokenId}`);
+  TransferTokens(user, tokenId, amount);
+  res.redirect('/');
 })
 
 app.listen(port, () => {

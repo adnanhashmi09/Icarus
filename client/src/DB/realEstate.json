@@ -1,76 +1,11 @@
-{
-  "data": [
-    {
-      "id": "1",
-      "name": "The Eastern Farms",
-      "address": "Sec 1, Vaishali, Ghaziabad",
-      "token-price": "72K",
-      "total-tokens": 10,
-      "tokens-available": 5,
-      "img-src": "IMG/one.jpg"
-    },
-    {
-      "id": "2",
-      "name": "Garden Villa",
-      "address": "Poc 5, Dwarka, Delhi",
-      "token-price": "52K",
-      "total-tokens": 15,
-      "tokens-available": 13,
-      "img-src": "IMG/two.jpg"
-    },
-    {
-      "id": "3",
-      "name": "Hashmi Manzil",
-      "address": "Blk D, NFC, Delhi",
-      "token-price": "64K",
-      "total-tokens": 15,
-      "tokens-available": 10,
-      "img-src": "IMG/three.jpg"
-    },
-    {
-      "id": "4",
-      "name": "Downtown Godown",
-      "address": "Sec 7, Vasant Kunj, Delhi",
-      "token-price": "52K",
-      "total-tokens": 25,
-      "tokens-available": 9,
-      "img-src": "IMG/four.jpg"
-    },
-    {
-      "id": "5",
-      "name": "Cloud Apartments",
-      "address": "Sec 3, Prestige Society, Bangaluru",
-      "token-price": "94K",
-      "total-tokens": 15,
-      "tokens-available": 11,
-      "img-src": "IMG/five.jpg"
-    },
-    {
-      "id": "6",
-      "name": "City Floors",
-      "address": "Blk D, Rajput Road, Nagpur",
-      "token-price": "56K",
-      "total-tokens": 10,
-      "tokens-available": 7,
-      "img-src": "IMG/six.jpeg"
-    },
-    {
-      "id": "7",
-      "name": "Kapoor and Sons Corp",
-      "address": "POK 6, Vasant Vihar, Delhi",
-      "token-price": "39K",
-      "total-tokens": 15,
-      "tokens-available": 9,
-      "img-src": "IMG/seven.jpeg"
-    },
-    {
-      "id": "8",
-      "name": "Blueberry Hill",
-      "address": "POK 2, Laxmi Nagar, Delhi",
-      "token-price": "57K",
-      "total-tokens": 25,
-      "tokens-available": 15,
-      "img-src": "IMG/eight.jpg"
-    }
+{"data":[
+  {"id":"1","name":"The Eastern Farms","address":"Sec 1, Vaishali, Ghaziabad","token-price":1.2,"total-tokens":10,"img-src":"IMG/one.jpg","ipfs_hash":"QmYjkhounwxxwA2VGNi6nwHbd9bTPcUJJBuyfxkQh4kqMy","tokenURI":"ipfs://QmV7fgHPXaJrYhTFahoEpo7yNua6SAjx6p8gAfzvGfEdaS"},
+  {"id":"2","name":"Garden Villa","address":"Poc 5, Dwarka, Delhi","token-price":2.0,"total-tokens":15,"img-src":"IMG/two.jpg","ipfs_hash":"QmNnsu25jiCqBo5HMKBvUFf1aVrEU91CS97Xinx6MaaVTv","tokenURI":"ipfs://QmZLHj1NfKdNcp4qVcHdAbsdPGo2t3oVTvfWbLryNt1i5U"},
+  {"id":"3","name":"Hashmi Manzil","address":"Blk D, NFC, Delhi","token-price":1.5,"total-tokens":15,"img-src":"IMG/three.jpg","ipfs_hash":"QmcYPuvbnEiGjhBnpJhYYrGbjf6n37osG3Q6gZfAAmKyTh","tokenURI":"ipfs://QmcGAvcmbnb3VdPRf6mksjR4vFKKbj5ykKtrHNRLqb1Lf4"},
+  {"id":"4","name":"Downtown Godown","address":"Sec 7, Vasant Kunj, Delhi","token-price":1.3,"total-tokens":25,"img-src":"IMG/four.jpg","ipfs_hash":"QmeTAKUVYHXW2WgyMmasovXLKNomrmncXXPWnT9MWS5NxY","tokenURI":"ipfs://QmTCKYp98gJx5i99mCKdCDDGRTc6PgzoFzSacZiqTeUbk5"},
+  {"id":"5","name":"Cloud Apartments","address":"Sec 3, Prestige Society, Bangaluru","token-price":2.5,"total-tokens":15,"img-src":"IMG/five.jpg","ipfs_hash":"QmPPjSGhHEn3g9ak9ZsozJbc4q1VGa4cGyULG2kwxTdHqG","tokenURI":"ipfs://Qmcjn6ixWAeW8iHV59tKSu5W4MvtsXk1RWRdrC1H3BVZEb"},
+  {"id":"6","name":"City Floors","address":"Blk D, Rajput Road, Nagpur","token-price":1.7,"total-tokens":10,"img-src":"IMG/six.jpeg","ipfs_hash":"QmSq1Go89wxcvQwDn46KhaAHdxZR6jse18ofsad2URwLAp","tokenURI":"ipfs://Qmf6cHbTe6mebziPGGRughYsbcmsQspNNEDzZm2SbSQcn5"},
+  {"id":"7","name":"Kapoor and Sons Corp","address":"POK 6, Vasant Vihar, Delhi","token-price":1,"total-tokens":15,"img-src":"IMG/seven.jpeg","ipfs_hash":"QmeZGdW1ty6W2zNomYAxPUxjTABxVbC4kB7x6v3c5qFDw1","tokenURI":"ipfs://QmdJpyDDeA8zzdHce8ynLnanPp86CNxpT8QUVTNTE2PF4L"},
+  {"id":"8","name":"Blueberry Hill","address":"POK 2, Laxmi Nagar, Delhi","token-price":1.9,"total-tokens":25,"img-src":"IMG/eight.jpg","ipfs_hash":"QmUbr35S2fHM9NJ5wB45guaDZJUwdLxHuJJtU9qLqGKAYB","tokenURI":"ipfs://QmTh7DNuzKdhLK79AdhzzFw4F4Zs4tiFrZ5auVJ6qnE1FB"}
   ]
 }
