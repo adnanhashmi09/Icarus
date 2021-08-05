@@ -49,18 +49,18 @@
         <label for="token">Tokens</label>
       </div>
       <div class="final">
-        <div class="total">Total : <%=prop["token-price"]%></div>
+        <div class="total">Total : <%=prop["token-price"]%> ETH</div>
         <button type="submit" class="btn">Buy</button>
       </div>
     </form>
   </body>
   <script>
     const calculate = () => {
-      const inp = document.querySelector('input[type="number"]');
-      const tot = document.querySelector('.total');
-      const price = prop["token-price"];
-      tot.innerHTML = `Total : ${price * inp.value}K`;
-    };
+    const inp = document.querySelector("input[name='token']");
+    const tot = document.querySelector('.total');
+    const price = Number('<%= prop["token-price"] %>');
+    tot.innerHTML = `Total : ${(price * inp.value).toFixed(1)} ETH`;
+  };
   </script>
   <script type="text/javascript" src="/JS/script.js" ></script>
 </html>

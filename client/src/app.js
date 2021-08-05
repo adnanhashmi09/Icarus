@@ -23,17 +23,16 @@ app.get('/estate/:id', async (req, res) => {
   const _id = '' + req.params.id;
   const propertyData = data.filter((d) => d.id == _id);
   const details = await getTokenDetails(req.params.id);
-  propertyData[0]["tokens-available"] = details['4'];
+  propertyData[0]["tokens-available"] = Number(details['4']);
   res.render('estate', { prop: propertyData[0] });
 });
 
-app.post('/estate/:id', (req,res) => {
+app.post('/estate/:id', async (req,res) => {
   const tokenId = req.params.id;
   const amount = req.body.token;
   const user = req.body.account;
-  console.log(tokenId, amount, user);
-  TransferTokens(user, tokenId, amount);
-  res.redirect('/');
+  await TransferTokens(user, tokenId, amount);
+  res.redirect(`/estate/${tokenId}`);
 })
 
 app.listen(port, () => {
